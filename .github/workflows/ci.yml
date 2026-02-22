@@ -36,7 +36,7 @@ jobs:
 
       - name: Build check - verify app can be created
         run: |
-          python -c "from app import create_app; create_app()"
+          python -c "import wsgi; print('App created OK')"
 
       - name: Run tests
         run: |

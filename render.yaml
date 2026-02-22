@@ -5,7 +5,7 @@ services:
     region: oregon
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn run:app --workers 1 --bind 0.0.0.0:$PORT --timeout 300 --keep-alive 5
+    startCommand: gunicorn wsgi:app --workers 1 --bind 0.0.0.0:$PORT --timeout 300 --keep-alive 5
     healthCheckPath: /health
     envVars:
       - key: OPENROUTER_API_KEY
