@@ -13,16 +13,17 @@ The application follows a standard Retrieve-Augment-Generate pattern:
 
 This architecture was chosen for its simplicity, debuggability, and effectiveness for domain-specific Q&A tasks.
 
-### 1.2 Embedding Model: all-MiniLM-L6-v2
+### 1.2 Embedding Model: BAAI/bge-small-en-v1.5 (via fastembed)
 
 **Why this model:**
-- Runs locally (no API cost, no latency for embedding)
+- Runs locally via ONNX runtime — no PyTorch required, ~80MB footprint vs ~350MB for PyTorch
 - 384-dimensional embeddings keep the vector store compact
-- Strong performance on semantic similarity benchmarks for its size
-- Fast inference (~14ms per sentence on CPU)
-- Well-suited for the document sizes in our corpus
+- Strong performance on semantic similarity benchmarks (MTEB) for its size
+- Fast ONNX inference with no GPU dependency
+- Fits within Render free-tier 512MB memory limit
 
 **Alternatives considered:**
+- `sentence-transformers/all-MiniLM-L6-v2` via PyTorch: Original choice, exceeded 512MB on Render free tier
 - OpenAI `text-embedding-3-small`: Better quality but adds API cost and dependency
 - `all-mpnet-base-v2`: Higher quality but 2x slower and larger
 
