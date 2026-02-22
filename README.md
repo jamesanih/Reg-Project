@@ -47,7 +47,7 @@ User Question
 |-----------|-----------|
 | Web Framework | Flask 3.0 |
 | LLM | OpenRouter (Llama 3.1 8B free tier) |
-| Embeddings | sentence-transformers/all-MiniLM-L6-v2 (local) |
+| Embeddings | BAAI/bge-small-en-v1.5 via fastembed (ONNX, local) |
 | Vector Store | ChromaDB (local, persistent) |
 | Frontend | Custom HTML/CSS/JS chat UI |
 
@@ -170,7 +170,7 @@ Key settings in `config.py`:
 | Setting | Default | Description |
 |---------|---------|-------------|
 | `OPENROUTER_MODEL` | `google/gemma-3-12b-it:free` | LLM model |
-| `EMBEDDING_MODEL` | `all-MiniLM-L6-v2` | Embedding model |
+| `EMBEDDING_MODEL` | `BAAI/bge-small-en-v1.5` | Embedding model (fastembed/ONNX) |
 | `CHUNK_SIZE` | 512 tokens | Max chunk size |
 | `TOP_K` | 5 | Number of chunks to retrieve |
 | `SIMILARITY_THRESHOLD` | 0.3 | Minimum relevance score |

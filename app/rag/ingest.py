@@ -4,7 +4,7 @@ import os
 import re
 import hashlib
 import chromadb
-from sentence_transformers import SentenceTransformer
+from fastembed import TextEmbedding
 
 # Module-level singletons
 _embedding_model = None
@@ -15,7 +15,7 @@ _collection = None
 def get_embedding_model(model_name):
     global _embedding_model
     if _embedding_model is None:
-        _embedding_model = SentenceTransformer(model_name)
+        _embedding_model = TextEmbedding(model_name=model_name)
     return _embedding_model
 
 
@@ -148,8 +148,8 @@ def build_index(config):
             "chunk_index": chunk["chunk_index"],
         })
 
-    # Embed all chunks
-    embeddings = model.encode(documents, show_progress_bar=True).tolist()
+    # Embed all chunks (fastembed returns a generator of numpy arrays)
+    embeddings = [e.tolist() for e in model.embed(documents)]
 
     # Upsert into ChromaDB (batch to avoid limits)
     batch_size = 100

@@ -15,8 +15,8 @@ def retrieve(query, config):
     top_k = config.get("TOP_K", 5)
     threshold = config.get("SIMILARITY_THRESHOLD", 0.3)
 
-    # Embed the query
-    query_embedding = model.encode([query]).tolist()
+    # Embed the query (fastembed returns a generator; wrap in list for ChromaDB)
+    query_embedding = [list(model.embed([query]))[0].tolist()]
 
     # Search ChromaDB
     results = collection.query(

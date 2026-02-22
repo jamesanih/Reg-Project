@@ -17,7 +17,7 @@ class Config:
     OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1/chat/completions"
 
     # Embedding model
-    EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+    EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"
 
     # Chunking
     CHUNK_SIZE = 512  # tokens
