@@ -1,0 +1,28 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Local vector store (rebuilt at container startup)
+chroma_db/
+
+# Secrets
+.env
+
+# Version control
+.git/
+.gitignore
+
+# CI/CD config
+.github/
+
+# Test artifacts
+.pytest_cache/
+evaluation/eval_results.json
+
+# OS
+.DS_Store
+Thumbs.db

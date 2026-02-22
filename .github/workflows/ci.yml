@@ -47,9 +47,19 @@ jobs:
           pip install flake8
           flake8 app/ --max-line-length=120 --ignore=E501,W503
 
+  docker-build:
+    name: Docker Build Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t acme-policy-rag:${{ github.sha }} .
+
   deploy:
     name: Deploy to Render
-    needs: test
+    needs: [test, docker-build]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
