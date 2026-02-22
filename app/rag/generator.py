@@ -109,9 +109,9 @@ def generate(query, chunks, config):
             "citations": [],
             "model": model,
         }
-    except requests.exceptions.HTTPError as e:
+    except requests.exceptions.HTTPError:
         return {
-            "answer": f"Sorry, there was an error communicating with the AI service. Please try again later.",
+            "answer": "Sorry, there was an error communicating with the AI service. Please try again later.",
             "citations": [],
             "model": model,
         }

@@ -53,7 +53,6 @@ def parse_markdown(file_path):
                         "content": text,
                         "source": filename,
                     })
-            level = len(heading_match.group(1))
             current_heading = heading_match.group(2).strip()
             current_content = []
         else:
@@ -95,7 +94,7 @@ def chunk_sections(sections, max_tokens=512, overlap_tokens=50):
             idx = 0
             chunk_num = 0
             while idx < len(words):
-                window = words[idx : idx + window_size]
+                window = words[idx:idx + window_size]
                 chunk_text = " ".join(window)
                 chunks.append({
                     "text": chunk_text,
