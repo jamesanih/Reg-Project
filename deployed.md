@@ -2,42 +2,42 @@
 
 ## Production URL
 
-This application is deployed on Render:
+This application is deployed on Railway.
 
-> **https://acme-policy-rag.onrender.com**
+> **URL will be available in Railway dashboard after first deploy**
 
 ## Deployment Setup
 
-### Render (Production)
+### Railway (Production)
 
-1. Go to [https://render.com](https://render.com) and connect your GitHub account
-2. Click **New > Web Service** and select the `Reg-Project` repository
-3. Render will auto-detect `render.yaml` and pre-fill the settings
-4. Set the environment variable:
+1. Go to [https://railway.app](https://railway.app) and create a new project
+2. Click **Deploy from GitHub repo** and select `Reg-Project`
+3. Railway auto-detects `railway.toml` and the `Dockerfile`
+4. Set the environment variable in Railway dashboard:
    - `OPENROUTER_API_KEY` → your OpenRouter API key
+   - `OPENROUTER_MODEL` → `deepseek/deepseek-r1-0528:free`
 5. Click **Deploy**
 
-The `render.yaml` in this repo configures:
-- **Runtime:** Python 3.11
-- **Build:** `pip install -r requirements.txt`
-- **Start:** `gunicorn run:app --workers 1 --bind 0.0.0.0:$PORT --timeout 300`
+The `railway.toml` configures:
+- **Builder:** Dockerfile
 - **Health check:** `GET /health`
+- **Restart policy:** on failure (max 3 retries)
 
 ### CI/CD (GitHub Actions)
 
 On every push to `main`:
 1. Tests run on Python 3.10 and 3.11
-2. Build check and lint run
-3. If all pass → Render deploy hook is triggered automatically
+2. Docker build check (without model download)
+3. If tests pass → Railway deploy hook is triggered automatically
 
 To enable auto-deploy from CI:
-1. In Render dashboard → your service → **Settings** → **Deploy Hook** → copy the URL
-2. In GitHub repo → **Settings** → **Secrets** → add `RENDER_DEPLOY_HOOK_URL`
+1. In Railway dashboard → your service → **Settings** → **Deploy** → **Deploy Hook** → copy the URL
+2. In GitHub → `Reg-Project` → **Settings** → **Secrets** → add `RAILWAY_DEPLOY_HOOK_URL`
 
-### Environment Variables on Render
+### Environment Variables on Railway
 
 | Variable | Value |
 |----------|-------|
-| `OPENROUTER_API_KEY` | Set manually in Render dashboard (secret) |
+| `OPENROUTER_API_KEY` | Set manually in Railway dashboard (secret) |
 | `OPENROUTER_MODEL` | `deepseek/deepseek-r1-0528:free` |
 | `FLASK_DEBUG` | `false` |
