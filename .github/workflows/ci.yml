@@ -80,4 +80,7 @@ jobs:
       - name: Deploy to Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        run: railway up --detach --ci --service "${{ secrets.RAILWAY_SERVICE_NAME }}"
+        run: |
+          railway up --detach --ci \
+            --project "${{ secrets.RAILWAY_PROJECT_ID }}" \
+            --service "${{ secrets.RAILWAY_SERVICE_NAME }}"
