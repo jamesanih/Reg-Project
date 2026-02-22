@@ -72,21 +72,12 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
     steps:
-      - name: Trigger Railway Deploy
+      - uses: actions/checkout@v4
+
+      - name: Install Railway CLI
+        run: npm install -g @railway/cli
+
+      - name: Deploy to Railway
         env:
-          DEPLOY_HOOK: ${{ secrets.RAILWAY_DEPLOY_HOOK_URL }}
-        run: |
-          if [ -z "$DEPLOY_HOOK" ]; then
-            echo "ERROR: RAILWAY_DEPLOY_HOOK_URL secret is not set"
-            exit 1
-          fi
-          response=$(curl -s -w "\n%{http_code}" -X POST "$DEPLOY_HOOK")
-          http_code=$(echo "$response" | tail -1)
-          body=$(echo "$response" | head -1)
-          echo "Response body: $body"
-          echo "HTTP status: $http_code"
-          if [ "$http_code" != "200" ] && [ "$http_code" != "201" ] && [ "$http_code" != "202" ]; then
-            echo "Deploy trigger failed"
-            exit 1
-          fi
-          echo "Deploy triggered successfully"
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: railway up --detach --ci

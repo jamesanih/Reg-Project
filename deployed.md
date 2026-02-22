@@ -31,8 +31,8 @@ On every push to `main`:
 3. If tests pass → Railway deploy hook is triggered automatically
 
 To enable auto-deploy from CI:
-1. In Railway dashboard → your service → **Settings** → **Deploy** → **Deploy Hook** → copy the URL
-2. In GitHub → `Reg-Project` → **Settings** → **Secrets** → add `RAILWAY_DEPLOY_HOOK_URL`
+1. In Railway dashboard → **Account Settings** → **Tokens** → create a new token
+2. In GitHub → `Reg-Project` → **Settings** → **Secrets** → **Actions** → add `RAILWAY_TOKEN`
 
 ### Environment Variables on Railway
 
