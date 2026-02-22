@@ -4,8 +4,7 @@
 
 This application is deployed on Render:
 
-> **URL will be available after first successful deploy at:**
-> `https://acme-policy-rag.onrender.com`
+> **https://acme-policy-rag.onrender.com**
 
 ## Deployment Setup
 
