@@ -2,7 +2,7 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install system dependencies needed by some Python packages
+# Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     && rm -rf /var/lib/apt/lists/*
@@ -11,16 +11,26 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Pre-download the fastembed/ONNX model at build time
-# This avoids a slow cold-start download on first request
-# Set SKIP_MODEL_DOWNLOAD=true in CI to skip this heavy step
-ARG SKIP_MODEL_DOWNLOAD=false
-RUN if [ "$SKIP_MODEL_DOWNLOAD" != "true" ]; then \
-      python -c "from fastembed import TextEmbedding; TextEmbedding(model_name='BAAI/bge-small-en-v1.5')"; \
-    fi
-
-# Copy application code
+# Copy application code and corpus
 COPY . .
+
+# Build arg to skip heavy steps in CI
+ARG SKIP_MODEL_DOWNLOAD=false
+
+# Pre-build the ChromaDB vector index AND download the embedding model
+# during Docker build (build env has no memory limit).
+# At runtime the app finds a pre-built index and loads the model
+# lazily on first query only — startup stays under 200MB.
+RUN if [ "$SKIP_MODEL_DOWNLOAD" != "true" ]; then \
+      python -c "\
+from config import Config; \
+from app.rag.ingest import build_index, get_collection; \
+config = {k: getattr(Config, k) for k in dir(Config) if not k.startswith('_')}; \
+print('Pre-building ChromaDB index...'); \
+count = build_index(config); \
+print(f'Indexed {count} chunks into ChromaDB') \
+"; \
+    fi
 
 # Render injects PORT at runtime (default 10000)
 EXPOSE 10000
