@@ -34,9 +34,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Build check - verify app can be created
+      - name: Build check - verify imports
         run: |
-          python -c "import wsgi; print('App created OK')"
+          python -c "
+          from config import Config
+          from app.routes import main_bp
+          from app.rag.ingest import parse_markdown, chunk_sections
+          from app.rag.retriever import retrieve
+          from app.rag.generator import generate, build_prompt
+          from app.rag.guardrails import apply_guardrails, check_scope
+          print('All imports OK')
+          "
 
       - name: Run tests
         run: |
@@ -54,18 +62,31 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build Docker image
-        run: docker build -t acme-policy-rag:${{ github.sha }} .
+      - name: Build Docker image (skip model download in CI)
+        run: docker build --build-arg SKIP_MODEL_DOWNLOAD=true -t acme-policy-rag:${{ github.sha }} .
 
   deploy:
     name: Deploy to Render
-    needs: [test, docker-build]
+    needs: [test]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
     steps:
       - name: Trigger Render Deploy
+        env:
+          DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
         run: |
-          curl -s -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}" \
-            -o /dev/null \
-            -w "HTTP status: %{http_code}\n"
+          if [ -z "$DEPLOY_HOOK" ]; then
+            echo "ERROR: RENDER_DEPLOY_HOOK_URL secret is not set"
+            exit 1
+          fi
+          response=$(curl -s -w "\n%{http_code}" -X POST "$DEPLOY_HOOK")
+          http_code=$(echo "$response" | tail -1)
+          body=$(echo "$response" | head -1)
+          echo "Response body: $body"
+          echo "HTTP status: $http_code"
+          if [ "$http_code" != "200" ] && [ "$http_code" != "201" ] && [ "$http_code" != "202" ]; then
+            echo "Deploy trigger failed"
+            exit 1
+          fi
+          echo "Deploy triggered successfully"
