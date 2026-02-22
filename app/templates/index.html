@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acme Policy Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1>Acme Policy Assistant</h1>
+                <p class="subtitle">Ask questions about company policies &amp; procedures</p>
+            </div>
+        </header>
+
+        <main class="chat-container" id="chatContainer">
+            <div class="messages" id="messages">
+                <div class="message bot-message">
+                    <div class="message-avatar">AI</div>
+                    <div class="message-content">
+                        <p>Hello! I'm the Acme Corporation Policy Assistant. I can help you find information about company policies including:</p>
+                        <ul>
+                            <li>PTO and time off</li>
+                            <li>Remote work guidelines</li>
+                            <li>Expense reimbursement</li>
+                            <li>Security requirements</li>
+                            <li>Performance reviews</li>
+                            <li>And more...</li>
+                        </ul>
+                        <p>What would you like to know?</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="input-area">
+            <form id="chatForm" class="input-form">
+                <input
+                    type="text"
+                    id="questionInput"
+                    placeholder="Ask a question about company policies..."
+                    autocomplete="off"
+                    maxlength="1000"
+                >
+                <button type="submit" id="sendBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 2L11 13"></path>
+                        <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+                    </svg>
+                </button>
+            </form>
+            <p class="disclaimer">Answers are generated from company policy documents. Always verify critical information with HR.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

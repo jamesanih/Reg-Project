@@ -1,0 +1,177 @@
+[
+  {
+    "id": 1,
+    "question": "How many PTO days do new employees get per year?",
+    "expected_answer": "New full-time employees (0-2 years of service) receive 15 PTO days per year.",
+    "expected_source": "Pto Policy",
+    "topic": "pto"
+  },
+  {
+    "id": 2,
+    "question": "Can I carry over unused PTO to the next year?",
+    "expected_answer": "Employees may carry over a maximum of 5 unused PTO days into the next calendar year. Any unused PTO beyond 5 days will be forfeited on December 31st.",
+    "expected_source": "Pto Policy",
+    "topic": "pto"
+  },
+  {
+    "id": 3,
+    "question": "What are the designated in-office days for hybrid employees?",
+    "expected_answer": "Tuesday and Thursday are designated in-office days for hybrid employees, who must work from the office a minimum of 2 days per week.",
+    "expected_source": "Remote Work Policy",
+    "topic": "remote_work"
+  },
+  {
+    "id": 4,
+    "question": "What internet speed is required for remote work?",
+    "expected_answer": "Remote employees must have reliable high-speed internet with minimum 25 Mbps download and 5 Mbps upload.",
+    "expected_source": "Remote Work Policy",
+    "topic": "remote_work"
+  },
+  {
+    "id": 5,
+    "question": "What is the per-person limit for a client entertainment meal?",
+    "expected_answer": "The per-person limit for client entertainment is $100, and it requires Director approval.",
+    "expected_source": "Expense Policy",
+    "topic": "expenses"
+  },
+  {
+    "id": 6,
+    "question": "How long do I have to submit expense reports?",
+    "expected_answer": "Expenses must be submitted within 30 days of being incurred. Expenses submitted more than 60 days late require VP approval and may be denied.",
+    "expected_source": "Expense Policy",
+    "topic": "expenses"
+  },
+  {
+    "id": 7,
+    "question": "What are the password requirements?",
+    "expected_answer": "Passwords must be minimum 12 characters, include at least one uppercase letter, one lowercase letter, one number, and one special character. They must be changed every 90 days.",
+    "expected_source": "Security Policy",
+    "topic": "security"
+  },
+  {
+    "id": 8,
+    "question": "How do I report a security incident?",
+    "expected_answer": "Report security incidents immediately to the Security Operations Center via email at security@acmecorp.com, phone ext. 9111, or Slack #security-incidents channel.",
+    "expected_source": "Security Policy",
+    "topic": "security"
+  },
+  {
+    "id": 9,
+    "question": "What is the company's anti-harassment policy?",
+    "expected_answer": "Acme Corporation has zero tolerance for harassment, discrimination, or retaliation based on race, color, religion, gender, gender identity, sexual orientation, national origin, age, disability, veteran status, or any other legally protected characteristic.",
+    "expected_source": "Code Of Conduct",
+    "topic": "code_of_conduct"
+  },
+  {
+    "id": 10,
+    "question": "What is the maximum gift value I can accept from a vendor?",
+    "expected_answer": "Employees may accept gifts of nominal value under $75 as a business courtesy. Gifts exceeding $75 must be reported to the Legal department. Cash gifts of any amount are never acceptable.",
+    "expected_source": "Code Of Conduct",
+    "topic": "code_of_conduct"
+  },
+  {
+    "id": 11,
+    "question": "What happens on a new employee's first day?",
+    "expected_answer": "Day 1 includes welcome and badge pickup at 9 AM, HR orientation at 9:30, IT setup at 11, team lunch at noon, equipment setup at 1 PM, manager 1:1 at 2 PM, self-paced materials at 3 PM, and buddy check-in at 4 PM.",
+    "expected_source": "Onboarding Policy",
+    "topic": "onboarding"
+  },
+  {
+    "id": 12,
+    "question": "How long is the probationary period for new hires?",
+    "expected_answer": "The probationary period is 90 days. At the end, managers complete a formal review and can confirm employment, extend probation by up to 30 days, or terminate.",
+    "expected_source": "Onboarding Policy",
+    "topic": "onboarding"
+  },
+  {
+    "id": 13,
+    "question": "What is the performance rating scale?",
+    "expected_answer": "The scale is 1-5: 1 (Unsatisfactory), 2 (Needs Improvement), 3 (Meets Expectations), 4 (Exceeds Expectations), 5 (Exceptional). Most employees should expect a 3 or 4.",
+    "expected_source": "Performance Review Policy",
+    "topic": "performance"
+  },
+  {
+    "id": 14,
+    "question": "How much is the annual merit increase for an employee who exceeds expectations?",
+    "expected_answer": "An employee with a rating of 4 (Exceeds Expectations) receives a 4-6% merit increase, effective April 1st.",
+    "expected_source": "Performance Review Policy",
+    "topic": "performance"
+  },
+  {
+    "id": 15,
+    "question": "How many company holidays are there per year?",
+    "expected_answer": "Acme Corporation recognizes 11 fixed holidays and provides 2 floating holidays per year, totaling 13 paid holidays.",
+    "expected_source": "Holiday Schedule",
+    "topic": "holidays"
+  },
+  {
+    "id": 16,
+    "question": "What is the year-end office shutdown period?",
+    "expected_answer": "The year-end shutdown is from December 24th through January 1st. Dec 24, 25, 31 and Jan 1 are paid holidays. Dec 26 and Dec 29-30 require employees to use PTO or floating holidays (3 days total).",
+    "expected_source": "Holiday Schedule",
+    "topic": "holidays"
+  },
+  {
+    "id": 17,
+    "question": "What class of flight can I book for a 6-hour flight?",
+    "expected_answer": "For flights between 5-8 hours, premium economy is permitted.",
+    "expected_source": "Travel Policy",
+    "topic": "travel"
+  },
+  {
+    "id": 18,
+    "question": "What is the per diem rate for domestic travel?",
+    "expected_answer": "The domestic travel per diem is $75/day, which covers all meals and incidental expenses with no receipts required.",
+    "expected_source": "Travel Policy",
+    "topic": "travel"
+  },
+  {
+    "id": 19,
+    "question": "How long does the company retain employee records?",
+    "expected_answer": "Employee records are retained for 7 years after separation.",
+    "expected_source": "Data Privacy Policy",
+    "topic": "data_privacy"
+  },
+  {
+    "id": 20,
+    "question": "What are an employee's data privacy rights?",
+    "expected_answer": "Employees have the right of access (copy of their data), right to rectification (corrections), right to erasure, right to data portability (CSV/JSON format), and right to object to processing.",
+    "expected_source": "Data Privacy Policy",
+    "topic": "data_privacy"
+  },
+  {
+    "id": 21,
+    "question": "What should I do if there is a fire in the office?",
+    "expected_answer": "Activate the nearest fire alarm pull station, evacuate via the nearest stairwell (do not use elevators), and assemble at the designated rally point in the parking lot. Follow floor warden instructions.",
+    "expected_source": "Health Safety Policy",
+    "topic": "health_safety"
+  },
+  {
+    "id": 22,
+    "question": "Does the company offer mental health support?",
+    "expected_answer": "Yes, the company offers an Employee Assistance Program (EAP) with free confidential counseling, 2 additional paid mental health days per year separate from PTO, flexible scheduling for therapy appointments, and a #wellness Slack channel.",
+    "expected_source": "Health Safety Policy",
+    "topic": "health_safety"
+  },
+  {
+    "id": 23,
+    "question": "What equipment does a new employee receive?",
+    "expected_answer": "Every full-time employee receives a laptop (MacBook Pro 14\" or Dell XPS 15), external 27\" 4K monitor, wireless keyboard and mouse, headset with microphone, and laptop bag.",
+    "expected_source": "Equipment Policy",
+    "topic": "equipment"
+  },
+  {
+    "id": 24,
+    "question": "What is the home office stipend amount for new remote workers?",
+    "expected_answer": "New remote-eligible employees receive a one-time $500 home office stipend for workspace setup, plus an annual $100 stipend for internet costs.",
+    "expected_source": "Equipment Policy",
+    "topic": "equipment"
+  },
+  {
+    "id": 25,
+    "question": "Can I work internationally for a month?",
+    "expected_answer": "International remote work is limited to a maximum of 2 weeks per calendar year and requires prior written approval from HR and Legal. Working for a full month would exceed the allowed limit.",
+    "expected_source": "Remote Work Policy",
+    "topic": "remote_work"
+  }
+]
