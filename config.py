@@ -12,7 +12,7 @@ class Config:
     # OpenRouter
     OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
     OPENROUTER_MODEL = os.getenv(
-        "OPENROUTER_MODEL", "deepseek/deepseek-r1-0528:free"
+        "OPENROUTER_MODEL", "meta-llama/llama-3.1-8b-instruct:free"
     )
     OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1/chat/completions"
 
@@ -24,7 +24,7 @@ class Config:
     CHUNK_OVERLAP = 50  # tokens
 
     # Retrieval
-    TOP_K = 5
+    TOP_K = 3
     SIMILARITY_THRESHOLD = 0.3  # minimum relevance score
 
     # Generation

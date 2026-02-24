@@ -73,7 +73,7 @@ def generate(query, chunks, config):
         "model": model,
         "messages": messages,
         "temperature": temperature,
-        "max_tokens": 8192,
+        "max_tokens": 600,
     }
 
     try:
